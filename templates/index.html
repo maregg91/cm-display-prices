@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+   <head>
+      <script type="text/javascript">
+         setTimeout(function () { 
+           location.reload();
+         }, 60 * 1000);
+     </script>
+   </head>
+   <body>
+
+      <h1>Price Chart</h1>
+
+      <p>{{ name }}</p>
+
+      <img src="/cmpg/plot.png" alt="Chart" height="400" width="600">
+      <table id="data" class="table table-striped">
+         <thead>
+           <tr>
+             <th>Date</th>
+             <th>Average Price</th>
+             <th>Std. Deviation</th>
+           </tr>
+         </thead>
+         <tbody>
+           {% for entry in entries %}
+             <tr>
+               <td>{{ entry[0] }}</td>
+               <td>{{ entry[1] }}</td>
+               <td>{{ entry[2] }}</td>
+             </tr>
+           {% endfor %}
+         </tbody>
+       </table>
+
+   </body>
+</html>
