@@ -23,6 +23,7 @@ app = Flask(__name__)
 
 fig = None
 entries = None
+p = None
 
 @app.route('/cmpg/plot.png')
 def plot_png():
@@ -38,6 +39,12 @@ def plot_png():
 def cardmarket_price_getter():
     global fig
     global entries
+    global p
+
+    if p is None:
+        p = Process(target=downloader_task)
+        p.start()
+
     fig, entries = get_price_chart()
     return render_template('index.html', name="Double Masters 2022", entries=entries)
 
